@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <style>
@@ -17,7 +18,10 @@
         user-select: none;
       "
     >
-      <span>Score: <span id="scoreEl">0</span></span>
+    <ul id="player-list">
+      <!-- list items will be generated dynamically -->
+      <!-- <span>Score: <span id="scoreEl">0</span></span> -->
+    </ul>
     </div>
     <canvas></canvas>
 
@@ -27,6 +31,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="./js/classes/Enemy.js"></script>
     <script src="./js/classes/Player.js"></script>
     <script src="./js/classes/Particle.js"></script>

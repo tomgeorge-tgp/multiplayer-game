@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game Modes</title>
+    <link rel="stylesheet" href="./landingPage.css">
+</head>
+</head>
+<body>
+	<div class="container">
+		<button id="singleplayer-btn">Single Player</button>
+		<button id="multiplayer-btn">Multiplayer</button>
+		<button id="tdm-btn">TDM</button>
+	</div>
+
+	<script>
+		const singleplayerBtn = document.getElementById("singleplayer-btn");
+		const multiplayerBtn = document.getElementById("multiplayer-btn");
+		const tdmBtn = document.getElementById("tdm-btn");
+
+		singleplayerBtn.addEventListener("click", () => {
+			window.location.href = "singleplayer.html";
+		});
+
+		multiplayerBtn.addEventListener("click", () => {
+			window.location.href = "multiplayer.html";
+		});
+
+		tdmBtn.addEventListener("click", () => {
+			window.location.href = "tdm.html";
+		});
+	</script>
+</body>
+</html>
