@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multiplayer Game</title>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		button {
+			background-color: blue;
+			color: white;
+			padding: 10px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			margin: 10px;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid blue;
+			border-radius: 5px;
+			margin: 10px;
+		}
+
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Multiplayer Game</h1>
+		<button id="create-room-btn">Create Room</button>
+		<!-- <button id="join-room-btn">Join Room</button> -->
+		<div id="room-id-input-container" class="hidden">
+			<label for="room-id-input">Enter Room ID:</label>
+			<input type="text" id="room-id-input">
+			<button id="join-btn">Join</button>
+		</div>
+	</div>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"
+    integrity="sha512-kVlGhj2qFy+KBCFuvjBJTGUMxbdqJKs4yK2jh0e0VPhWUPiPC87bzm4THmaaIee3Oj7j6sDpTTgm2EPPiESqBg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+	<script type="text/javascript" src="/multiplayerRoomscript.js"></script>
+    <script>
+// const createRoomBtn = document.querySelector('#create-room-btn');
+// const joinRoomBtn = document.querySelector('#join-room-btn');
+// const roomIdInputContainer = document.querySelector('#room-id-input-container');
+// const roomIdInput = document.querySelector('#room-id-input');
+// const joinBtn = document.querySelector('#join-btn');
+
+// let socket = null;
+// let roomId = null;
+
+// // Create room
+// createRoomBtn.addEventListener('click', () => {
+//     socket = io(); // Initialize socket connection
+//      console.log("here");
+//     // Generate random room ID
+//     roomId = Math.floor(Math.random() * 9000) + 1000;
+
+//     // Join the room
+//     socket.emit('join-room', roomId);
+//     socket.on('multiplayer', (currentRoomID) => {
+//     console.log('joining', currentRoomID);
+//     // Redirect to game page
+//     window.location.href = `/multiplayer/room/${currentRoomID}`;
+//     });
+// });
+
+// // Join room
+// // joinRoomBtn.addEventListener('click', () => {
+// //     roomIdInputContainer.classList.remove('hidden');
+// // });
+
+// joinBtn.addEventListener('click', () => {
+//     roomId = roomIdInput.value;
+//     console.log("here2 ");
+//     // Check if room exists
+//     fetch(`/check-room/${roomId}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.exists) {
+//                 // Join the room
+//                 socket = io(); // Initialize socket connection
+//                 socket.emit('join-room', roomId);
+
+//                 // Redirect to game page
+//                 window.location.href = `/game/${roomId}`;
+//             } else {
+//                 alert('Room does not exist');
+//             }
+//         });
+// });
+
+//     </script>
+</body>
+</html>

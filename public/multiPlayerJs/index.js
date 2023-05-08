@@ -16,10 +16,10 @@ const particles = []
 const projectiles = []
 
 socket.on('updatePlayers', (backendPlayers)=>{
+  console.log("backendPlayers", backendPlayers);
   for(const id in backendPlayers)
   {
     const backendPlayer = backendPlayers[id]
-    
     if(!players[id])
     {
       players[id]=new Player(backendPlayer.id,backendPlayer.x,backendPlayer.y,backendPlayer.score,10,'white')
@@ -28,6 +28,10 @@ socket.on('updatePlayers', (backendPlayers)=>{
     {
       players[id].x = backendPlayer.x;
       players[id].y = backendPlayer.y;
+    }
+    else if(players[id].score != backendPlayer.score)
+    {
+      players[id].score = backendPlayer.score;
     }
     
   }
@@ -75,6 +79,7 @@ function animate() {
   playerList.innerHTML = "";
   for (const id in players) {
     const playerdata = players[id];
+    // console.log("playerData: " , playerdata);
     // create a list item with the player name and score
     const listItem = document.createElement("li");
     listItem.innerHTML = `${playerdata.id}: <span id="score${id}">${playerdata.score}</span>`;

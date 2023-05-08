@@ -13,9 +13,46 @@ app.use(express.static('public'))
 
 
 
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html')
+// })
+
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/public/index.html')
+// })
+// app.get('/singleplayer', (req, res) => {
+//   res.sendFile(__dirname + '/public/singleplayer.html')
+// })
+// // app.get('/multiplayer', (req, res) => {
+// //   res.sendFile(__dirname + '/public/multiplayer.html')
+// // })
+
+// const gameId = Math.floor(Math.random() * 9000) + 1000;
+// console.log("gameId: " + gameId);
+// app.get('/multiplayer/:gameId', (req, res) => {
+//   // const gameId = req.params.gameId;
+//   res.sendFile(__dirname + '/public/multiplayer.html');
+// });
+
+const gameId = Math.floor(Math.random() * 9000) + 1000;
+console.log("gameId: " + gameId);
+
+
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/landingPage.html')
-})
+  res.sendFile(__dirname + '/public/index.html')
+});
+app.get('/multiplayer/room', (req, res) => {
+  res.sendFile(__dirname + '/public/multiplayerRoom.html')
+ 
+});
+
+app.get('/singleplayer', (req, res) => {
+  res.sendFile(__dirname + '/public/singleplayer.html')
+});
+
+// app.get('/multiplayer/:gameId', (req, res) => {
+//   res.sendFile(__dirname + '/public/multiplayer.html');
+// });
 
 const players = {
 
@@ -24,6 +61,33 @@ let count=0;
 // const projectiles={
 
 // }
+
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('join-room', (roomId) => {
+    console.log(`User joined room ${roomId}`);
+    socket.join(roomId);
+    app.get('/multiplayer/room/:roomId', (req, res) => {
+    res.sendFile(__dirname + '/public/multiplayer.html');
+  });
+  io.emit('multiplayer',roomId);
+  });
+  // app.get('/check-room/:roomId', (req, res) => {
+  //   const roomId = req.params.roomId;
+    
+  //   // Check if the room exists in the list of rooms
+  //   const roomExists = io.sockets.adapter.rooms.has(roomId);
+  
+  //   // Send back a JSON response indicating whether the room exists or not
+  //   res.json({ exists: roomExists });
+  // });
+  
+});
+
+
+
 
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -58,9 +122,9 @@ io.on('connection', (socket) => {
   socket.on('fireProjectilehit', (player) => {
     // Create a new projectile object and add it to the player's array of projectiles
     // player.projectiles.push(projectile);
-    console.log(player);
+    console.log("player jj",player.projectilePlayer);
     players[player.projectilePlayer].score+=1;
-
+    console.log("player jj",players[player.projectilePlayer]);
     delete players[player.projectileHitPlayer];
     // console.log('player!!!!',player);
    // io.emit('fireProjectile',projectile);
