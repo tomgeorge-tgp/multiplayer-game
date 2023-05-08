@@ -1,3 +1,4 @@
-This is a starter project for the [Chris Courses Online Multiplayer Game Tutorial](https://www.youtube.com/watch?v=Wcvqnx14cZA) available on YouTube.
+This is a  game which have 3 modes single player ,multiplayer and tdm version 
+i used js and basic html and css 
+implemented the multiplayer and room creation using socket.io
 
-To get started, download this repo and double click `index.html` to see the single-player game we'll base our multiplayer-game off of.
